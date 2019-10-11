@@ -2,6 +2,7 @@ defmodule MyApp.Base.Query do
   defmacro __using__(_) do
     quote do
       import Ecto.Query, warn: false
+      alias MyApp.Repo
       alias MyApp.MyContext.{ModelOne, ModelTwo}
     end
   end
@@ -12,5 +13,5 @@ end
 defmodule ModelXRepository do
   use MyApp.Base.Query
   
-  def all_model_on, do: ...
+  def all_model_on, do: Repo.all(ModelOne)
 end
